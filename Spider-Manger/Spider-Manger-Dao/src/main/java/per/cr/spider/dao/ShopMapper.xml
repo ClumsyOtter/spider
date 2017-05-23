@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="per.cr.spider.dao.ShopMapper">
+	<resultMap id="BaseResultMap" type="per.cr.spider.pojo.Shop">
+		<id column="SID" property="sid" jdbcType="INTEGER" />
+		<result column="SNAME" property="sname" jdbcType="VARCHAR" />
+		<result column="SPHONE" property="sphone" jdbcType="VARCHAR" />
+		<result column="SGRADE" property="sgrade" jdbcType="DOUBLE" />
+		<result column="STYPE" property="stype" jdbcType="VARCHAR" />
+		<result column="SREGION" property="sregion" jdbcType="INTEGER" />
+		<result column="SRODE" property="srode" jdbcType="INTEGER" />
+		<result column="SADDRESS" property="saddress" jdbcType="VARCHAR" />
+		<result column="SLINK" property="slink" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		SID, SNAME, SPHONE, SGRADE, STYPE, SREGION, SRODE,
+		SADDRESS, SLINK
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="per.cr.spider.pojo.ShopExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from shop
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from shop
+		where SID = #{sid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from shop
+		where SID = #{sid,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByExample" parameterType="per.cr.spider.pojo.ShopExample">
+		delete from shop
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="per.cr.spider.pojo.Shop">
+		insert into shop (SID, SNAME,
+		SPHONE,
+		SGRADE, STYPE, SREGION,
+		SRODE, SADDRESS, SLINK
+		)
+		values
+		(#{sid,jdbcType=INTEGER}, #{sname,jdbcType=VARCHAR},
+		#{sphone,jdbcType=VARCHAR},
+		#{sgrade,jdbcType=DOUBLE},
+		#{stype,jdbcType=VARCHAR}, #{sregion,jdbcType=INTEGER},
+		#{srode,jdbcType=INTEGER}, #{saddress,jdbcType=VARCHAR},
+		#{slink,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="per.cr.spider.pojo.Shop">
+		insert into shop
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="sid != null">
+				SID,
+			</if>
+			<if test="sname != null">
+				SNAME,
+			</if>
+			<if test="sphone != null">
+				SPHONE,
+			</if>
+			<if test="sgrade != null">
+				SGRADE,
+			</if>
+			<if test="stype != null">
+				STYPE,
+			</if>
+			<if test="sregion != null">
+				SREGION,
+			</if>
+			<if test="srode != null">
+				SRODE,
+			</if>
+			<if test="saddress != null">
+				SADDRESS,
+			</if>
+			<if test="slink != null">
+				SLINK,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sid != null">
+				#{sid,jdbcType=INTEGER},
+			</if>
+			<if test="sname != null">
+				#{sname,jdbcType=VARCHAR},
+			</if>
+			<if test="sphone != null">
+				#{sphone,jdbcType=VARCHAR},
+			</if>
+			<if test="sgrade != null">
+				#{sgrade,jdbcType=DOUBLE},
+			</if>
+			<if test="stype != null">
+				#{stype,jdbcType=VARCHAR},
+			</if>
+			<if test="sregion != null">
+				#{sregion,jdbcType=INTEGER},
+			</if>
+			<if test="srode != null">
+				#{srode,jdbcType=INTEGER},
+			</if>
+			<if test="saddress != null">
+				#{saddress,jdbcType=VARCHAR},
+			</if>
+			<if test="slink != null">
+				#{slink,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="per.cr.spider.pojo.ShopExample"
+		resultType="java.lang.Integer">
+		select count(*) from shop
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update shop
+		<set>
+			<if test="record.sid != null">
+				SID = #{record.sid,jdbcType=INTEGER},
+			</if>
+			<if test="record.sname != null">
+				SNAME = #{record.sname,jdbcType=VARCHAR},
+			</if>
+			<if test="record.sphone != null">
+				SPHONE = #{record.sphone,jdbcType=VARCHAR},
+			</if>
+			<if test="record.sgrade != null">
+				SGRADE = #{record.sgrade,jdbcType=DOUBLE},
+			</if>
+			<if test="record.stype != null">
+				STYPE = #{record.stype,jdbcType=VARCHAR},
+			</if>
+			<if test="record.sregion != null">
+				SREGION = #{record.sregion,jdbcType=INTEGER},
+			</if>
+			<if test="record.srode != null">
+				SRODE = #{record.srode,jdbcType=INTEGER},
+			</if>
+			<if test="record.saddress != null">
+				SADDRESS = #{record.saddress,jdbcType=VARCHAR},
+			</if>
+			<if test="record.slink != null">
+				SLINK = #{record.slink,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update shop
+		set SID = #{record.sid,jdbcType=INTEGER},
+		SNAME =
+		#{record.sname,jdbcType=VARCHAR},
+		SPHONE =
+		#{record.sphone,jdbcType=VARCHAR},
+		SGRADE =
+		#{record.sgrade,jdbcType=DOUBLE},
+		STYPE =
+		#{record.stype,jdbcType=VARCHAR},
+		SREGION =
+		#{record.sregion,jdbcType=INTEGER},
+		SRODE =
+		#{record.srode,jdbcType=INTEGER},
+		SADDRESS =
+		#{record.saddress,jdbcType=VARCHAR},
+		SLINK =
+		#{record.slink,jdbcType=VARCHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="per.cr.spider.pojo.Shop">
+		update shop
+		<set>
+			<if test="sname != null">
+				SNAME = #{sname,jdbcType=VARCHAR},
+			</if>
+			<if test="sphone != null">
+				SPHONE = #{sphone,jdbcType=VARCHAR},
+			</if>
+			<if test="sgrade != null">
+				SGRADE = #{sgrade,jdbcType=DOUBLE},
+			</if>
+			<if test="stype != null">
+				STYPE = #{stype,jdbcType=VARCHAR},
+			</if>
+			<if test="sregion != null">
+				SREGION = #{sregion,jdbcType=INTEGER},
+			</if>
+			<if test="srode != null">
+				SRODE = #{srode,jdbcType=INTEGER},
+			</if>
+			<if test="saddress != null">
+				SADDRESS = #{saddress,jdbcType=VARCHAR},
+			</if>
+			<if test="slink != null">
+				SLINK = #{slink,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where SID = #{sid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="per.cr.spider.pojo.Shop">
+		update shop
+		set
+		SNAME = #{sname,jdbcType=VARCHAR},
+		SPHONE = #{sphone,jdbcType=VARCHAR},
+		SGRADE = #{sgrade,jdbcType=DOUBLE},
+		STYPE = #{stype,jdbcType=VARCHAR},
+		SREGION = #{sregion,jdbcType=INTEGER},
+		SRODE =
+		#{srode,jdbcType=INTEGER},
+		SADDRESS = #{saddress,jdbcType=VARCHAR},
+		SLINK = #{slink,jdbcType=VARCHAR}
+		where SID = #{sid,jdbcType=INTEGER}
+	</update>
+</mapper>
