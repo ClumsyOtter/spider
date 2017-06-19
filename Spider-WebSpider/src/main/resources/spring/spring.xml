@@ -13,14 +13,15 @@
 	<context:component-scan base-package="per.cr.spider.service" />
 	<dubbo:application name="Spider-WebSpider" />
 	<dubbo:registry protocol="zookeeper" address="192.168.134.133:2181" />
-	<dubbo:reference interface="per.cr.spider.serivce.StreetService"
-		id="streetService"></dubbo:reference>
-	<dubbo:reference interface="per.cr.spider.serivce.FoodService"
+	<dubbo:reference interface="per.cr.spider.meituan.serivce.StreetService"
+	id="streetService"></dubbo:reference>
+	<dubbo:reference interface="per.cr.spider.meituan.serivce.FoodService"
 		id="foodService"></dubbo:reference>
-	<dubbo:reference interface="per.cr.spider.serivce.RegionService"
+	<dubbo:reference interface="per.cr.spider.meituan.serivce.RegionService"
 		id="regionService"></dubbo:reference>
-
-	<dubbo:reference interface="per.cr.spider.serivce.ShopService"
+	<dubbo:reference interface="per.cr.spider.meituan.serivce.ShopService"
 		id="shopService"></dubbo:reference>
+	<dubbo:reference interface="per.cr.spider.douban.service.MovieService"
+		id="movieService"></dubbo:reference>
 
 </beans>

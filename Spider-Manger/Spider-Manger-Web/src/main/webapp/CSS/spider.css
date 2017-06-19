@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+
+.navbar-nav li:HOVER {
+	background-color: #f9f9f9;
+}
+
+.panel-heading:HOVER {
+	background-color: #337ab7;
+}
+
+.th-inner {
+	max-width: 1500px}
+
+.minfo {
+	font-size: 13px;
+}
+
+.ninfo {
+	max-width: 150px;
+}
+
+.listtitle {
+	font-size: 13px;
+	padding-left: 15px
+}
+
+.tinfo {
+	max-width: 700px
+}
+
+.listtitle th {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 500;
+}
+
+#mangerbt span {
+	color: rgb(84, 25, 217);
+}
+
+.mantable {
+	
+}

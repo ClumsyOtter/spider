@@ -9,24 +9,8 @@
 	<groupId>Spider-WebSpider</groupId>
 	<artifactId>Spider-WebSpider</artifactId>
 	<dependencies>
-		<!-- spring -->
-		<!-- spring -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-		</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-aspects</artifactId>
-	</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jms</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-		</dependency>
+
+
 		<!-- pojo -->
 		<dependency>
 			<groupId>Spider-Parent</groupId>

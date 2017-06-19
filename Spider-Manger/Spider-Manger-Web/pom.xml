@@ -10,6 +10,12 @@
 	<packaging>war</packaging>
 
 	<dependencies>
+		<!-- interface -->
+		<dependency>
+			<groupId>Spider-Parent</groupId>
+			<artifactId>Spider-Manger-Interface</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- Spring MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -40,7 +46,11 @@
 					<version>2.2</version>
 					<configuration>
 						<port>8080</port>
-						<path>/</path>
+						<!-- 注意此处的url,修改成tomcat监听的端口即可 -->
+						<url>http://106.14.199.160:80/manager/text</url>
+						<server>tomcat7</server> <!-- 此处的名字必须和setting.xml中配置的ID一致 -->
+						<path>/</path> <!-- 此处的名字是项目发布的工程名 -->
+						<server>tomcat7</server>
 					</configuration>
 				</plugin>
 			</plugins>

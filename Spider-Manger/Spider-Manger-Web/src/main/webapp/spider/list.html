@@ -1,0 +1,58 @@
+<head>
+<meta charset="utf-8">
+<title>爬爬</title>
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="../CSS/spider.css">
+<script src="../Jquery/jquery-3.2.1.js"></script>
+<script src="../bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="../JS/spider.js"></script>
+<script type="text/javascript" src="../JS/jquery.twbsPagination.js"></script>
+<script type="text/javascript" src="../JS/list.js"></script>
+</head>
+<body class="container-fluid">
+	<div class="row clearfix">
+		<nav class="navbar navbar-default" role="navigation"
+			style="background-color: white;">
+			<div class="navbar-header" style="padding-left: 10%;">
+				<a class="navbar-brand" style="color: #563d7c;" href="../index.html">首页</a>
+			</div>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li id="msg"><a href="./list.html" style="color: #563d7c;">电影信息</a></li>
+					<li><a href="./ls.html" style="color: #563d7c;">电影管理</a></li>
+					<li><a href="./chart.html" style="color: #563d7c;">电影分析</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<table class="table">
+		<thead>
+			<tr class="listtitle">
+				<th style="padding-left: 20px">名称</th>
+				<th style="padding-left: 250px">详情</th>
+				<th style="text-align: center;"><button class="btn btn-default"
+						style="max-height: 30px; width: 100%;" id="mrate">
+						评分<span style="float: right;"></span>
+					</button></th>
+				<th style="text-align: center; min-width: 80px"><button
+						id="mpls" class="btn btn-default"
+						style="max-height: 30px; width: 100%;" id="pls">
+						评论人数<span style="float: right;"></span>
+					</button></th>
+				<th style="text-align: center;">详情链接</th>
+				<th style="text-align: center;"><button id="mdate"
+						class="btn btn-default" style="max-height: 30px; width: 100%;"
+						id="date">
+						年份<span style="float: right;"></span>
+					</button></th>
+			</tr>
+		</thead>
+		<tbody id="list">
+		</tbody>
+	</table>
+	<div class="col-md-6" id="pagination">
+		<ul id="pagination-demo" class="pagination-sm"></ul>
+	</div>
+</body>
+</html>

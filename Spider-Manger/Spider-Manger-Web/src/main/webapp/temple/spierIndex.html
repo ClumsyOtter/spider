@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>项目简介</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body id="top">
+	<!-- Header -->
+	<header id="header" style="width: 30%">
+		<div class="inner">
+			<a href="../index.html" class="image avatar"><img
+				src="../img/icon.png" alt="" /></a>
+			<h1>
+				<strong>爬虫电影项目简介</strong>
+			</h1>
+			基于Httpclicent Jsoup Jquery Bootstrap<br> Spring SpringMVC
+			Mybatis Echart 的简单系统<br> 根据需求爬取网络数据，然后进行数据管理<br>
+			可实现电影信息的模糊查询,删除以及修改<br> 利用echart实现电影分析的数据可视化
+		</div>
+	</header>
+
+	<!-- Main -->
+	<div id="main" style="padding: 0px; max-width: 60em">
+		<!-- One -->
+		<section id="one">
+			<header class="major" style="padding-top: 15px">
+				<h2>
+					爬虫电影项目<br />
+				</h2>
+			</header>
+			<p>项目分为三个模块</p>
+			<p>
+				<strong>第一个模块是爬虫模块负责抓取数据</strong><br>利用httpclicent对指定链接进行下载<br>利用jsoup强大的解析功能(css选择器和正则表达式)对数据进行提取
+			</p>
+			<p>
+				<strong>第二个模块是后台模块负责处理请求和数据</strong><br>使用c3p0管理数据库连接池,并且使用spring对c3p0进行配置<br>采用MVC模式创建模型和视图和控制器(也就是DAO和Service以及Control)对数据进行分层处理
+			</p>
+			<p>
+				<strong>第三个模块是前台模块负责数据呈现和人机交互</strong><br>使用boostrap进行布局和构建页面,其中使用CSS自定义一部分样式满足需求<br>
+				使用Jquery进行事件互动,使得页面具有交互性质<br>使用ajax进行数据的异步获取,使得降低服务器负担,提供更好的体验
+			</p>
+			<p>
+				<strong style="color: red">点击项目入口按钮进入项目,<br>注意：请使用电脑访问
+				</strong>
+			</p>
+			<ul class="actions">
+				<li><a href="../spider/ls.html" class="button">项目入口</a></li>
+			</ul>
+		</section>
+
+		<!-- Two -->
+		<section id="two">
+			<h2>项目演示</h2>
+			<p>
+				<strong style="color: red">说明</strong><br>爬虫模块由于内部耦合较大，没有展示的必要<br>影片分析就是将数据生成图表可自行查看(简单的生成了两个分析图表(echart的实际功能非常强大))
+			</p>
+			<p>
+				<strong>项目演示</strong><br> 这个是初代版本 <br>实现分页,实现评分,评论人数,日期的排序查看
+			</p>
+			<div class="row">
+				<video width="1000" height="500" controls>
+					<source src="../movie/V1.mp4" type="video/mp4">
+				</video>
+			</div>
+			<br>
+			<p>
+				<strong>项目演示二</strong> <br>这个版本功能较为完善<br>实现分页,实现电影信息的修改和删除<br>以及对名称和详情的模糊查询
+			</p>
+			<div class="row">
+				<video width="1000" height="500" controls>
+					<source src="../movie/V2.mp4" type="video/mp4">
+				</video>
+			</div>
+			<br> <br>
+		</section>
+
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://github.com/ClumsyOtter"
+						class="icon fa-github"><span style="margin-left: 5px">Github</span></a></li>
+					<li><a href="http://blog.csdn.net/a609733301"
+						style="border-bottom: 0px"><img width="20px" height="20px"
+							src="../img/f_icon (1).png"><span style="margin-left: 5px">博客</span></a></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.poptrox.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
+</html>

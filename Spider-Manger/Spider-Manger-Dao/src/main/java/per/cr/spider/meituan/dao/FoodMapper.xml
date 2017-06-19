@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="per.cr.spider.meituan.dao.FoodMapper">
+	<resultMap id="BaseResultMap" type="per.cr.spider.meituan.pojo.Food">
+		<id column="FID" property="fid" jdbcType="INTEGER" />
+		<result column="FSID" property="fsid" jdbcType="INTEGER" />
+		<result column="FNAME" property="fname" jdbcType="VARCHAR" />
+		<result column="FPRICE" property="fprice" jdbcType="DOUBLE" />
+		<result column="FSALE" property="fsale" jdbcType="INTEGER" />
+		<result column="FDATE" property="fdate" jdbcType="DATE" />
+		<result column="FLINK" property="flink" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		FID, FSID, FNAME, FPRICE, FSALE, FDATE, FLINK
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="per.cr.spider.meituan.pojo.FoodExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from food
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from food
+		where FID = #{fid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from food
+		where FID = #{fid,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByExample" parameterType="per.cr.spider.meituan.pojo.FoodExample">
+		delete from food
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="per.cr.spider.meituan.pojo.Food">
+		insert into food (FID, FSID, FNAME,
+		FPRICE, FSALE, FDATE, FLINK
+		)
+		values (#{fid,jdbcType=INTEGER}, #{fsid,jdbcType=INTEGER},
+		#{fname,jdbcType=VARCHAR},
+		#{fprice,jdbcType=DOUBLE}, #{fsale,jdbcType=INTEGER}, #{fdate,jdbcType=DATE},
+		#{flink,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="per.cr.spider.meituan.pojo.Food">
+		insert into food
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				FID,
+			</if>
+			<if test="fsid != null">
+				FSID,
+			</if>
+			<if test="fname != null">
+				FNAME,
+			</if>
+			<if test="fprice != null">
+				FPRICE,
+			</if>
+			<if test="fsale != null">
+				FSALE,
+			</if>
+			<if test="fdate != null">
+				FDATE,
+			</if>
+			<if test="flink != null">
+				FLINK,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				#{fid,jdbcType=INTEGER},
+			</if>
+			<if test="fsid != null">
+				#{fsid,jdbcType=INTEGER},
+			</if>
+			<if test="fname != null">
+				#{fname,jdbcType=VARCHAR},
+			</if>
+			<if test="fprice != null">
+				#{fprice,jdbcType=DOUBLE},
+			</if>
+			<if test="fsale != null">
+				#{fsale,jdbcType=INTEGER},
+			</if>
+			<if test="fdate != null">
+				#{fdate,jdbcType=DATE},
+			</if>
+			<if test="flink != null">
+				#{flink,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="per.cr.spider.meituan.pojo.FoodExample"
+		resultType="java.lang.Integer">
+		select count(*) from food
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update food
+		<set>
+			<if test="record.fid != null">
+				FID = #{record.fid,jdbcType=INTEGER},
+			</if>
+			<if test="record.fsid != null">
+				FSID = #{record.fsid,jdbcType=INTEGER},
+			</if>
+			<if test="record.fname != null">
+				FNAME = #{record.fname,jdbcType=VARCHAR},
+			</if>
+			<if test="record.fprice != null">
+				FPRICE = #{record.fprice,jdbcType=DOUBLE},
+			</if>
+			<if test="record.fsale != null">
+				FSALE = #{record.fsale,jdbcType=INTEGER},
+			</if>
+			<if test="record.fdate != null">
+				FDATE = #{record.fdate,jdbcType=DATE},
+			</if>
+			<if test="record.flink != null">
+				FLINK = #{record.flink,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update food
+		set FID = #{record.fid,jdbcType=INTEGER},
+		FSID = #{record.fsid,jdbcType=INTEGER},
+		FNAME = #{record.fname,jdbcType=VARCHAR},
+		FPRICE = #{record.fprice,jdbcType=DOUBLE},
+		FSALE = #{record.fsale,jdbcType=INTEGER},
+		FDATE = #{record.fdate,jdbcType=DATE},
+		FLINK = #{record.flink,jdbcType=VARCHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="per.cr.spider.meituan.pojo.Food">
+		update food
+		<set>
+			<if test="fsid != null">
+				FSID = #{fsid,jdbcType=INTEGER},
+			</if>
+			<if test="fname != null">
+				FNAME = #{fname,jdbcType=VARCHAR},
+			</if>
+			<if test="fprice != null">
+				FPRICE = #{fprice,jdbcType=DOUBLE},
+			</if>
+			<if test="fsale != null">
+				FSALE = #{fsale,jdbcType=INTEGER},
+			</if>
+			<if test="fdate != null">
+				FDATE = #{fdate,jdbcType=DATE},
+			</if>
+			<if test="flink != null">
+				FLINK = #{flink,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where FID = #{fid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="per.cr.spider.meituan.pojo.Food">
+		update food
+		set FSID = #{fsid,jdbcType=INTEGER},
+		FNAME = #{fname,jdbcType=VARCHAR},
+		FPRICE = #{fprice,jdbcType=DOUBLE},
+		FSALE = #{fsale,jdbcType=INTEGER},
+		FDATE = #{fdate,jdbcType=DATE},
+		FLINK = #{flink,jdbcType=VARCHAR}
+		where FID = #{fid,jdbcType=INTEGER}
+	</update>
+</mapper>

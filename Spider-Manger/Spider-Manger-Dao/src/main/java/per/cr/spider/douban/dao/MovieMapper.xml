@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="per.cr.spider.douban.dao.MovieMapper">
+	<resultMap id="BaseResultMap" type="per.cr.spider.douban.pojo.Movie">
+		<id column="MID" property="mid" jdbcType="INTEGER" />
+		<result column="MNAME" property="mname" jdbcType="VARCHAR" />
+		<result column="MINFO" property="minfo" jdbcType="VARCHAR" />
+		<result column="MRATE" property="mrate" jdbcType="DOUBLE" />
+		<result column="MPLS" property="mpls" jdbcType="INTEGER" />
+		<result column="SLINK" property="slink" jdbcType="VARCHAR" />
+		<result column="MDATE" property="mdate" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		MID, MNAME, MINFO, MRATE, MPLS, SLINK, MDATE
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="per.cr.spider.douban.pojo.MovieExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from movie
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from movie
+		where MID = #{mid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from movie
+		where MID = #{mid,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByExample" parameterType="per.cr.spider.douban.pojo.MovieExample">
+		delete from movie
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="per.cr.spider.douban.pojo.Movie">
+		insert into movie (MID, MNAME,
+		MINFO,
+		MRATE, MPLS, SLINK,
+		MDATE)
+		values (#{mid,jdbcType=INTEGER},
+		#{mname,jdbcType=VARCHAR},
+		#{minfo,jdbcType=VARCHAR},
+		#{mrate,jdbcType=DOUBLE}, #{mpls,jdbcType=INTEGER},
+		#{slink,jdbcType=VARCHAR},
+		#{mdate,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="per.cr.spider.douban.pojo.Movie">
+		insert into movie
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mid != null">
+				MID,
+			</if>
+			<if test="mname != null">
+				MNAME,
+			</if>
+			<if test="minfo != null">
+				MINFO,
+			</if>
+			<if test="mrate != null">
+				MRATE,
+			</if>
+			<if test="mpls != null">
+				MPLS,
+			</if>
+			<if test="slink != null">
+				SLINK,
+			</if>
+			<if test="mdate != null">
+				MDATE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mid != null">
+				#{mid,jdbcType=INTEGER},
+			</if>
+			<if test="mname != null">
+				#{mname,jdbcType=VARCHAR},
+			</if>
+			<if test="minfo != null">
+				#{minfo,jdbcType=VARCHAR},
+			</if>
+			<if test="mrate != null">
+				#{mrate,jdbcType=DOUBLE},
+			</if>
+			<if test="mpls != null">
+				#{mpls,jdbcType=INTEGER},
+			</if>
+			<if test="slink != null">
+				#{slink,jdbcType=VARCHAR},
+			</if>
+			<if test="mdate != null">
+				#{mdate,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="per.cr.spider.douban.pojo.MovieExample"
+		resultType="java.lang.Integer">
+		select count(*) from movie
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+
+	<!-- 分页 -->
+	<select id="page" parameterType="int" resultMap="BaseResultMap">
+		select * from
+		movie limit #{start},#{end};
+	</select>
+	<!-- 查询总数 -->
+	<select id="count" resultType="java.lang.Integer">
+		select count(*) from movie;
+	</select>
+
+	<!-- 查询带参数结果总数 -->
+	<select id="countByParam" resultType="java.lang.Integer">
+		select count(*) from movie
+		where ${colum} like ${data};
+	</select>
+
+	<!-- 排序查询 -->
+	<select id="pageBySort" resultMap="BaseResultMap">
+		select * from movie order by
+		${colum} ${sort} limit #{page},#{row};
+	</select>
+	<!-- 搜索 -->
+	<select id="search" resultMap="BaseResultMap">
+		select * from movie where
+		${colum}
+		like ${data} limit #{page},#{row};
+	</select>
+
+
+
+	<update id="updateByExampleSelective" parameterType="map">
+		update movie
+		<set>
+			<if test="record.mid != null">
+				MID = #{record.mid,jdbcType=INTEGER},
+			</if>
+			<if test="record.mname != null">
+				MNAME = #{record.mname,jdbcType=VARCHAR},
+			</if>
+			<if test="record.minfo != null">
+				MINFO = #{record.minfo,jdbcType=VARCHAR},
+			</if>
+			<if test="record.mrate != null">
+				MRATE = #{record.mrate,jdbcType=DOUBLE},
+			</if>
+			<if test="record.mpls != null">
+				MPLS = #{record.mpls,jdbcType=INTEGER},
+			</if>
+			<if test="record.slink != null">
+				SLINK = #{record.slink,jdbcType=VARCHAR},
+			</if>
+			<if test="record.mdate != null">
+				MDATE = #{record.mdate,jdbcType=INTEGER},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update movie
+		set MID = #{record.mid,jdbcType=INTEGER},
+		MNAME =
+		#{record.mname,jdbcType=VARCHAR},
+		MINFO =
+		#{record.minfo,jdbcType=VARCHAR},
+		MRATE =
+		#{record.mrate,jdbcType=DOUBLE},
+		MPLS =
+		#{record.mpls,jdbcType=INTEGER},
+		SLINK =
+		#{record.slink,jdbcType=VARCHAR},
+		MDATE =
+		#{record.mdate,jdbcType=INTEGER}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="per.cr.spider.douban.pojo.Movie">
+		update movie
+		<set>
+			<if test="mname != null">
+				MNAME = #{mname,jdbcType=VARCHAR},
+			</if>
+			<if test="minfo != null">
+				MINFO = #{minfo,jdbcType=VARCHAR},
+			</if>
+			<if test="mrate != null">
+				MRATE = #{mrate,jdbcType=DOUBLE},
+			</if>
+			<if test="mpls != null">
+				MPLS = #{mpls,jdbcType=INTEGER},
+			</if>
+			<if test="slink != null">
+				SLINK = #{slink,jdbcType=VARCHAR},
+			</if>
+			<if test="mdate != null">
+				MDATE = #{mdate,jdbcType=INTEGER},
+			</if>
+		</set>
+		where MID = #{mid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="per.cr.spider.douban.pojo.Movie">
+		update movie
+		set
+		MNAME = #{mname,jdbcType=VARCHAR},
+		MINFO = #{minfo,jdbcType=VARCHAR},
+		MRATE = #{mrate,jdbcType=DOUBLE},
+		MPLS = #{mpls,jdbcType=INTEGER},
+		SLINK = #{slink,jdbcType=VARCHAR},
+		MDATE = #{mdate,jdbcType=INTEGER}
+		where MID = #{mid,jdbcType=INTEGER}
+	</update>
+
+
+	<!-- 图表的查询 -->
+	<select id="countByChart" parameterType="per.cr.spider.douban.pojo.ChartExample"
+		resultType="int">
+		select count(*) from movie where
+		<if test="colum_regix != null">
+			${colum_regix} like ${regix}
+			<if test="colum_limit != null">
+				and
+			</if>
+		</if>
+		<if test="colum_limit != null">
+			${colum_limit} between ${start} and ${end}
+		</if>
+	</select>
+</mapper>

@@ -5,10 +5,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
-import per.cr.spider.serivce.FoodService;
-import per.cr.spider.serivce.RegionService;
-import per.cr.spider.serivce.ShopService;
-import per.cr.spider.serivce.StreetService;
+import per.cr.spider.meituan.serivce.FoodService;
+import per.cr.spider.meituan.serivce.RegionService;
+import per.cr.spider.meituan.serivce.ShopService;
+import per.cr.spider.meituan.serivce.StreetService;
 
 @Service
 public class DubboTest {

@@ -1,0 +1,110 @@
+<html>
+<head>
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="../CSS/bootstrap-table.css">
+<script src="../Jquery/jquery-3.2.1.js"></script>
+<script src="../bootstrap/js/bootstrap.js"></script>
+<script src="../JS/bootstrap-table.js"></script>
+<script src="../JS/bootstrap-editable.js"></script>
+<script src="../JS/bootstrap-table-zh-CN.js"></script>
+<script src="../JS/bootstrap-table-export.js"></script>
+<script src="../JS/tableExport.js"></script>
+<script type="text/javascript" src="../JS/manger.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row clearfix">
+			<nav class="navbar navbar-default" role="navigation"
+				style="background-color: white; margin-bottom: 0px">
+				<div class="navbar-header" style="padding-left: 10%;">
+					<a class="navbar-brand" style="color: #563d7c;"
+						href="../index.html">首页</a>
+				</div>
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li id="msg"><a href="./list.html" style="color: #563d7c;">电影信息</a></li>
+						<li><a href="./ls.html" style="color: #563d7c;">电影管理</a></li>
+						<li><a href="./chart.html" style="color: #563d7c;">电影分析</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div style="width: 100%">
+			<div id="toolbar" style="padding-left: 15px">
+				<div class="form-inline" role="form">
+					<div style="float: right; padding-left: 10px">
+						<select class="form-control">
+							<option id="seachname" value="mname">名字</option>
+							<option value="minfo">详情</option>
+						</select> <input id="search" class="form-control" type="text"
+							placeholder="Search">
+						<button id="ok" class="btn btn-default">搜索</button>
+					</div>
+
+				</div>
+			</div>
+			<table id="demo-table" style="font-size: 13px" data-pagination="true"
+				data-show-columns="true" data-show-export="true"
+				data-toolbar="#toolbar">
+			</table>
+		</div>
+	</div>
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<h4 class="modal-title" id="myModalLabel"
+					style="text-align: center; padding-top: 10px">修改</h4>
+
+
+				<input id="id" type="hidden"> <label
+					style="padding: 5 0 0 45;" for="lastname"
+					class="col-sm-2 control-label">名称</label>
+				<div class="col-sm-9" style="padding-bottom: 5px">
+					<input id="name" type="text" class="form-control">
+				</div>
+
+
+				<label style="padding: 5 0 0 45;" for="lastname"
+					class="col-sm-2 control-label">详情</label>
+				<div class="col-sm-9" style="padding-bottom: 5px">
+					<input id="info" type="text" class="form-control">
+				</div>
+
+
+				<label style="padding: 5 0 0 45;" for="lastname"
+					class="col-sm-2 control-label">评分</label>
+				<div class="col-sm-9" style="padding-bottom: 5px">
+					<input type="text" class="form-control" id="rate">
+
+				</div>
+
+				<label style="padding: 5 0 0 30;" for="lastname"
+					class="col-sm-2 control-label">评论人数</label>
+				<div class="col-sm-9" style="padding-bottom: 5px">
+					<input type="text" class="form-control" id="pls">
+				</div>
+
+
+				<label for="lastname" class="col-sm-2 control-label"
+					style="padding: 5 0 0 45;">日期</label>
+				<div class="col-sm-9" style="padding-bottom: 5px">
+					<input type="text" class="form-control" id="date">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+					</button>
+					<button type="button" id="update" class="btn btn-primary">提交更改</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+</body>
+</html>

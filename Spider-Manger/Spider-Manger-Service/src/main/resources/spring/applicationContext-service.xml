@@ -10,7 +10,7 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 
 	<!-- 配置包扫描器，扫描所有带@Service注解的类 -->
-	<context:component-scan base-package="per.cr.spider.serivceImpl" />
+	<context:component-scan base-package="per.cr.spider" />
 	<!-- 发布dubbo服务 -->
 	<!-- 提供方应用信息，用于计算依赖关系 -->
 	<dubbo:application name="Spider-Manger-Service" />
@@ -19,12 +19,14 @@
 	<!-- 用dubbo协议在20880端口暴露服务 -->
 	<dubbo:protocol name="dubbo" port="20880" />
 	<!-- 声明需要暴露的服务接口 -->
-	<dubbo:service interface="per.cr.spider.serivce.FoodService"
+	<dubbo:service interface="per.cr.spider.meituan.serivce.FoodService"
 		ref="foodServiceImpl" timeout="600000"></dubbo:service>
-	<dubbo:service interface="per.cr.spider.serivce.RegionService"
+	<dubbo:service interface="per.cr.spider.meituan.serivce.RegionService"
 		ref="regionServiceImpl" timeout="600000"></dubbo:service>
-	<dubbo:service interface="per.cr.spider.serivce.ShopService"
+	<dubbo:service interface="per.cr.spider.meituan.serivce.ShopService"
 		ref="shopServiceImpl" timeout="600000"></dubbo:service>
-	<dubbo:service interface="per.cr.spider.serivce.StreetService"
+	<dubbo:service interface="per.cr.spider.meituan.serivce.StreetService"
 		ref="streetServiceImpl" timeout="600000"></dubbo:service>
+	<dubbo:service interface="per.cr.spider.douban.service.MovieService"
+		ref="movieServiceImpl" timeout="600000"></dubbo:service>
 </beans>

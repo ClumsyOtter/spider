@@ -28,6 +28,6 @@
 	</bean>
 	<!-- Mapper映射文件的包扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="per.cr.spider.dao" />
+		<property name="basePackage" value="per.cr.spider" />
 	</bean>
 </beans>
